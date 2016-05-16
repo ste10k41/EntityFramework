@@ -40,7 +40,7 @@ namespace Microsoft.Extensions.Logging
         {
             if (logger.IsEnabled(LogLevel.Warning))
             {
-                logger.Log<object>(LogLevel.Warning, (int)eventId, null, null, (_, __) => formatter());
+                logger.Log<object>(LogLevel.Warning, (int)eventId, eventId, null, (_, __) => formatter());
             }
         }
     }

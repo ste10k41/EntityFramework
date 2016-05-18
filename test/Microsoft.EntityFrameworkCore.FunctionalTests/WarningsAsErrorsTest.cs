@@ -100,7 +100,7 @@ namespace Microsoft.EntityFrameworkCore.Specification.Tests
                 {
                 }
 
-                public bool IsEnabled(LogLevel logLevel) => logLevel == LogLevel.Warning;
+                public bool IsEnabled(LogLevel logLevel) => false;
 
                 public IDisposable BeginScope<TState>(TState state) => null;
             }

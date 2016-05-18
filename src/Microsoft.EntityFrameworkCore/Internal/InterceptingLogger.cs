@@ -39,7 +39,6 @@ namespace Microsoft.EntityFrameworkCore.Internal
             Func<TState, Exception, string> formatter)
         {
             if (logLevel == LogLevel.Warning
-                && IsEnabled(LogLevel.Warning)
                 && _warningsAsErrorsOptionsExtensions.Count > 0)
             {
                 var stateAsEnum = state as Enum;
@@ -56,7 +55,10 @@ namespace Microsoft.EntityFrameworkCore.Internal
                 }
             }
 
-            _logger.Log(logLevel, eventId, state, exception, formatter);
+            if (IsEnabled(logLevel))
+            {
+                _logger.Log(logLevel, eventId, state, exception, formatter);
+            }
         }
 
         public virtual bool IsEnabled(LogLevel logLevel)
